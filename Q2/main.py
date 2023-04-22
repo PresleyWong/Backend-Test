@@ -1,8 +1,10 @@
+import uvicorn
 import hashlib
 import string
 import random
 import time
 from fastapi import FastAPI
+
 
 app = FastAPI()
 
@@ -41,9 +43,8 @@ async def get_hash_odd_number():
             continue
 
     end_time = time.time()
-    return {"body": response["hash"], "time_elapsed": end_time - start_time}
+    return {"hash": response["hash"], "time_elapsed": end_time - start_time}
 
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
