@@ -2,7 +2,6 @@ import hashlib
 import string
 import random
 import time
-from typing import Union
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -18,11 +17,33 @@ def random_string_generator(number_of_character=20):
     return output
 
 
-@app.get("/")
-def get_sha256_hash():
+@app.get("/get-random-hash")
+async def get_sha256_hash():
     start_time = time.time()
     text = random_string_generator()
     hash = hashlib.sha256(text.encode('UTF-8')).hexdigest()
     time.sleep(1)
     end_time = time.time()
-    return {"hash": hash, "time_elapsed": end_time-start_time}
+    return {"hash": hash, "time_elapsed": end_time - start_time}
+
+
+@app.get("/get-hash-odd-number")
+async def get_hash_odd_number():
+    start_time = time.time()
+    found_flag = False
+    while not found_flag:
+        response = await get_sha256_hash()
+        last_character = response["hash"][-1]
+
+        if last_character.isdigit() and int(last_character) % 2 != 0:
+            found_flag = True
+        else:
+            continue
+
+    end_time = time.time()
+    return {"body": response["hash"], "time_elapsed": end_time - start_time}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
