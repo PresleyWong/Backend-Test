@@ -5,7 +5,6 @@ import random
 import time
 from fastapi import FastAPI
 
-
 app = FastAPI()
 
 
@@ -31,9 +30,13 @@ async def get_sha256_hash():
 
 @app.get("/get-hash-odd-number")
 async def get_hash_odd_number():
+    time_limit = 20
     start_time = time.time()
     found_flag = False
     while not found_flag:
+        if (time.time() - start_time) > time_limit:
+            return {"hash": "timeout", "time_elapsed": time.time() - start_time}
+
         response = await get_sha256_hash()
         last_character = response["hash"][-1]
 
