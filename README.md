@@ -10,7 +10,7 @@
 - [Get Random Hash] : `GET /get-random-hash`
 
 ### Endpoint #2
-- [Get Random Hash] : `GET /get-hash-odd-number`
+- [Get Odd Number Random Hash] : `GET /get-hash-odd-number`
 
 ### How to run API Service for a Random Hash Machine(RHM):
 - uvicorn main:app --reload
