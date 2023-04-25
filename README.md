@@ -1,6 +1,6 @@
 ## Question 1
 
-###How to run:
+### How to run:
 
 - python main.py
 
@@ -12,17 +12,17 @@
 ### Endpoint #2
 - [Get Random Hash] : `GET /get-hash-odd-number`
 
-###How to run API Service for a Random Hash Machine(RHM):
+### How to run API Service for a Random Hash Machine(RHM):
 - uvicorn main:app --reload
 
 ![FastAPI](images/api_service.png)
 
-###How to run load Test:
+### How to run load Test:
 - python test.py
 
 ![FastAPI](images/loadtest.png)
 
-###How to run FastAPI UI:
+### How to run FastAPI UI:
 - http://127.0.0.1:8000/docs
 
 ![FastAPI](images/fastapi.png)
