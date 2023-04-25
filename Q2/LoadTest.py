@@ -12,3 +12,4 @@ def load_test(n=20):
 if __name__ == "__main__":
     iteration = input("Enter number of test:")
     load_test(int(iteration))
+
