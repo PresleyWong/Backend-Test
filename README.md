@@ -18,7 +18,7 @@
 ![FastAPI](images/api_service.png)
 
 ### How to run load Test:
-- python test.py
+- python LoadTest.py
 
 ![FastAPI](images/loadtest.png)
 

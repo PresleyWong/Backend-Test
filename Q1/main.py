@@ -19,6 +19,9 @@ def f(n):
                 print("buzz")
             else:
                 print(value)
+    else:
+        print("Wrong input type. Only positive integer allow.")
 
 
-f(15)
+if __name__ == "__main__":
+    f(15)
