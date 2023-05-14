@@ -6,6 +6,7 @@ import time
 from fastapi import FastAPI
 from threading import Thread
 import multiprocessing
+import asyncio
 
 app = FastAPI()
 
@@ -25,7 +26,7 @@ async def get_sha256_hash():
     start_time = time.time()
     text = random_string_generator()
     hash = hashlib.sha256(text.encode('UTF-8')).hexdigest()
-    time.sleep(1)
+    await asyncio.sleep(1)
     end_time = time.time()
     return {"hash": hash, "time_elapsed": end_time - start_time}
 
@@ -51,6 +52,8 @@ async def get_hash_odd_number():
     return {"hash": response["hash"], "time_elapsed": end_time - start_time}
 
 
+
+
 ## Improved Random Hash Machine ###
 def random_hash_generator(procnum, hash_dict):
     text = random_string_generator()
@@ -73,7 +76,7 @@ async def get_sha256_hash_v2():
     for proc in jobs:
         proc.join()
 
-    time.sleep(1)
+    await asyncio.sleep(1)
     end_time = time.time()
 
     return {"hash_list": hash_dict.values(), "time_elapsed": end_time - start_time}
@@ -93,7 +96,7 @@ async def get_hash_odd_number_v2():
                 found_flag = True
                 break
 
-    time.sleep(1)
+    await asyncio.sleep(1)
     end_time = time.time()
     return {"hash": hash, "time_elapsed": end_time - start_time}
 
