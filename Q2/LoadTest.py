@@ -7,7 +7,7 @@ import asyncio
 async def load_test(i):
     async with aiohttp.ClientSession() as session:
         print(f"#{i+1} call endpoint ")
-        async with session.get('http://127.0.0.1:8000/get-hash-odd-number-v2') as response:
+        async with session.get('http://127.0.0.1:8000/get-hash-odd-number') as response:
             data = await response.json()
             print(f"#{i+1} response: {data}")
 

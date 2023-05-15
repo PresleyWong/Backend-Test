@@ -18,7 +18,7 @@ def random_string_generator(number_of_character=20):
         selected_option = random.choice(character_options)
         selected_character = random.choice(selected_option)
         output += selected_character
-    return output
+    return output + str(time.time())
 
 
 @app.get("/get-random-hash")
